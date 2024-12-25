@@ -21,7 +21,6 @@ public class TokenService {
     @Value("${api.security.token.secret}")
     private String secret;
 
-    // Geração do token JWT
     public String generateToken(User user) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
@@ -35,20 +34,17 @@ public class TokenService {
         }
     }
 
-    // Validação do token JWT
     public String validateToken(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
-            JWTVerifier verifier = JWT.require(algorithm).build(); // Cria o verificador
-            DecodedJWT decodedJWT = verifier.verify(token); // Verifica o token
-            return decodedJWT.getSubject(); // Retorna o "subject" (neste caso, o username)
+            JWTVerifier verifier = JWT.require(algorithm).build(); 
+            DecodedJWT decodedJWT = verifier.verify(token);
+            return decodedJWT.getSubject();
         } catch (JWTVerificationException exception) {
-            // Exceção lançada se o token for inválido
             return null;
         }
     }
 
-    // Método auxiliar para gerar a data de expiração
     private Instant generateExpirationDate() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.UTC);
     }

@@ -15,13 +15,12 @@ public class FaltaController {
     @Autowired
     private FaltaService faltaService;
 
-    // Consulta as faltas de um aluno específico
+
     @GetMapping("/aluno/{alunoId}")
     public List<Falta> getFaltasByAluno(@PathVariable Long alunoId) {
-        return faltaService.findByAlunoId(alunoId);  // Método que filtra faltas do aluno
+        return faltaService.findByAlunoId(alunoId); 
     }
 
-    // Consulta as faltas de um aluno específico em uma determinada turma
     @GetMapping("/aluno/{alunoId}/turma/{turmaId}")
     public ResponseEntity<Falta> getFaltaByAlunoAndTurma(@PathVariable Long alunoId, @PathVariable Long turmaId) {
         Falta falta = faltaService.findByAlunoAndTurma(alunoId, turmaId);
@@ -31,13 +30,11 @@ public class FaltaController {
         return ResponseEntity.notFound().build();
     }
 
-    // Cadastro ou atualização de uma falta
     @PostMapping
     public Falta createOrUpdateFalta(@RequestBody Falta falta) {
         return faltaService.save(falta);
     }
 
-    // Exclui uma falta
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFalta(@PathVariable Long id) {
         faltaService.deleteById(id);

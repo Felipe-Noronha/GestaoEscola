@@ -30,12 +30,10 @@ public class FaltaService {
         faltaRepository.deleteById(id);
     }
 
-    // Adiciona o método para buscar faltas por aluno
     public List<Falta> findByAlunoId(Long alunoId) {
         return faltaRepository.findByAlunoId(alunoId);
     }
 
-    // Método para buscar falta por aluno e turma
     public Falta findByAlunoAndTurma(Long alunoId, Long turmaId) {
         return faltaRepository.findByAlunoIdAndTurmaId(alunoId, turmaId);
     }

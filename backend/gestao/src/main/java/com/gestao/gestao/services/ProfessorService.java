@@ -14,22 +14,18 @@ public class ProfessorService {
     @Autowired
     private ProfessorRepository professorRepository;
 
-    // Buscar todos os professores
     public List<Professor> findAll() {
         return professorRepository.findAll();
     }
 
-    // Buscar um professor pelo ID
     public Optional<Professor> findById(Long id) {
         return professorRepository.findById(id);
     }
 
-    // Salvar ou atualizar um professor
     public Professor save(Professor professor) {
         return professorRepository.save(professor);
     }
 
-    // Deletar um professor pelo ID
     public void deleteById(Long id) {
         professorRepository.deleteById(id);
     }

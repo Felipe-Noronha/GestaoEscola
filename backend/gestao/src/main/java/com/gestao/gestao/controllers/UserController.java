@@ -17,14 +17,12 @@ public class UserController {
 
     private final UserRepository repository;
 
-    // Endpoint para listar todos os usuários
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = repository.findAll();
         return ResponseEntity.ok(users);
     }
 
-    // Endpoint para obter um usuário por ID
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         Optional<User> user = repository.findById(id);
@@ -35,7 +33,6 @@ public class UserController {
         }
     }
 
-    // Endpoint para editar um usuário
     @PutMapping("/{id}")
     public ResponseEntity<User> editUser(@PathVariable Long id, @RequestBody RegisterRequestDTO body) {
         Optional<User> userOptional = repository.findById(id);
@@ -43,7 +40,7 @@ public class UserController {
             User user = userOptional.get();
             user.setUsername(body.getUsername());
             user.setEmail(body.getEmail());
-            user.setPassword(body.getPassword()); // Se necessário, encripte a senha antes de salvar
+            user.setPassword(body.getPassword());
             user.setRole(body.getRole());
             repository.save(user);
             return ResponseEntity.ok(user);
@@ -52,7 +49,6 @@ public class UserController {
         }
     }
 
-    // Endpoint para excluir um usuário
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         Optional<User> userOptional = repository.findById(id);

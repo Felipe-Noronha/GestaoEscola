@@ -25,7 +25,7 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
     private final TokenService tokenService;
 
-    // Login endpoint
+
     @PostMapping("/login")
     public ResponseEntity<ResponseDTO> login(@RequestBody LoginRequestDTO body) {
         User user = this.repository.findByEmail(body.username()).orElseThrow(() -> new RuntimeException("User not found"));
@@ -39,7 +39,6 @@ public class AuthController {
         return ResponseEntity.badRequest().build();
     }
 
-    // Register endpoint
     @PostMapping("/register")
     public ResponseEntity<ResponseDTO> register(@RequestBody RegisterRequestDTO body) {
         Optional<User> user = this.repository.findByEmail(body.getEmail());

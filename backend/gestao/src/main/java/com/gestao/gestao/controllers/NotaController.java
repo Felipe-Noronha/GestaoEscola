@@ -15,13 +15,11 @@ public class NotaController {
     @Autowired
     private NotaService notaService;
 
-    // Consulta as notas de um aluno específico
     @GetMapping("/aluno/{alunoId}")
     public List<Nota> getNotasByAluno(@PathVariable Long alunoId) {
-        return notaService.findByAlunoId(alunoId);  // Método que filtra notas do aluno
+        return notaService.findByAlunoId(alunoId);
     }
 
-    // Consulta a nota de um aluno específico em uma determinada turma
     @GetMapping("/aluno/{alunoId}/turma/{turmaId}")
     public ResponseEntity<Nota> getNotaByAlunoAndTurma(@PathVariable Long alunoId, @PathVariable Long turmaId) {
         Nota nota = notaService.findByAlunoAndTurma(alunoId, turmaId);
@@ -31,13 +29,11 @@ public class NotaController {
         return ResponseEntity.notFound().build();
     }
 
-    // Cadastro ou atualização de uma nota
     @PostMapping
     public Nota createOrUpdateNota(@RequestBody Nota nota) {
         return notaService.save(nota);
     }
 
-    // Exclui uma nota
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteNota(@PathVariable Long id) {
         notaService.deleteById(id);
