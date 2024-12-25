@@ -17,7 +17,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Imagem final para execução
-FROM openjdk:21-jdk-alpine
+FROM openjdk:21-jdk-slim
 
 # Defina o diretório de trabalho no container
 WORKDIR /app
