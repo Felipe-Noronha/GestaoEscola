@@ -1,0 +1,64 @@
+<div class="register-container">
+    <h2>Cadastro de Usuário</h2>
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+      
+      <div class="form-group">
+        <label for="username">Nome de Usuário:</label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          name="username"
+          [(ngModel)]="user.username"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="user.email"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Senha:</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="user.password"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="role">Papel:</label>
+        <select
+          id="role"
+          class="form-control"
+          name="role"
+          [(ngModel)]="user.role"
+          required
+        >
+          <option value="professor">Professor</option>
+          <option value="aluno">Aluno</option>
+        </select>
+      </div>
+  
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!registerForm.valid"
+      >
+        Cadastrar
+      </button>
+    </form>
+  </div>
+  

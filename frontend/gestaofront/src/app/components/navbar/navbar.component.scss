@@ -1,0 +1,42 @@
+/* Estilo básico para a navbar */
+nav {
+    background-color: #333; /* Cor de fundo */
+    padding: 1rem; /* Espaçamento interno */
+    display: flex;
+    justify-content: center; /* Alinha os itens ao centro */
+    align-items: center;
+  }
+  
+  /* Estilo para o contêiner de lista */
+  ul {
+    list-style-type: none; /* Remove os pontos de lista */
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  /* Estilo para cada item da lista */
+  li {
+    margin: 0 1rem; /* Espaçamento entre os itens */
+  }
+  
+  /* Estilo para os links */
+  a {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: white; /* Cor do texto */
+    font-size: 1.1rem; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte */
+    transition: color 0.3s ease; /* Efeito suave de transição na cor */
+  }
+  
+  /* Efeito de hover para os links */
+  a:hover {
+    color: #f0a500; /* Cor ao passar o mouse */
+  }
+  
+  /* Adiciona uma linha abaixo do link ativo */
+  a.router-link-active {
+    border-bottom: 2px solid #f0a500; /* Cor da linha de ativação */
+    padding-bottom: 0.2rem;
+  }
+  
